@@ -26,3 +26,5 @@ El método buscar_ruta() se utiliza para encontrar la ruta más corta. Si se enc
 
 Salida:
 Si se encuentra un camino, el programa imprime la ruta seguida por el agente como una lista de coordenadas.
+Luego, se imprime el laberinto con las celdas del camino marcado como 'X'.
+Si no se encuentra un camino, el programa imprime el mensaje "No se encontró un camino."

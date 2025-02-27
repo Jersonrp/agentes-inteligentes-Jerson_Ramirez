@@ -41,26 +41,39 @@ class Laberinto:
 
         return None  # Si no se encuentra un camino
 
+    def marcar_ruta(self, ruta):
+        """Marca la ruta seguida con 'X' en el laberinto"""
+        for x, y in ruta:
+            if self.laberinto[x][y] != 'S' and self.laberinto[x][y] != 'M':
+                self.laberinto[x][y] = 'X'
+
 
 # Definición del laberinto (5x5)
 # 'S' = Inicio, 'M' = Meta, '#' = Pared, ' ' = Espacio libre
 laberinto = [
     ['S', ' ', '#', ' ', ' '],
     ['#', ' ', '#', ' ', '#'],
-    ['#', ' ', '#', ' ', ' '],
+    ['#', ' ', ' ', '#', ' '],
     [' ', ' ', ' ', ' ', '#'],
-    ['#', '#', ' ', 'M', '#']
+    ['#', '#', ' ', ' ', 'M']
 ]
 
 # Posiciones de inicio y meta
 inicio = (0, 0)  # 'S'
 meta = (4, 3)    # 'M'
 
-# Crear el objeto laberinto y buscar la ruta
+
 agente = Laberinto(laberinto, inicio, meta)
 camino = agente.buscar_ruta()
 
 if camino:
     print("Camino encontrado:", camino)
+    # Marcar la ruta en el laberinto
+    agente.marcar_ruta(camino)
+
+   
+    print("\nLaberinto con la ruta marcada:")
+    for fila in agente.laberinto:
+        print(' '.join(fila))
 else:
     print("No se encontró un camino.")
